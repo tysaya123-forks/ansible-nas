@@ -36,10 +36,12 @@ ansible_python_interpreter: /usr/bin/python3
 samba_shares_root: /mnt/Volume3
 
 # Where stuff downloaded will be stored
-downloads_root: "{{ samba_shares_root }}/downloads"
+#downloads_root: "{{ samba_shares_root }}/downloads"
+downloads_root: "/tank/downloads"
 
 # Where your movies are stored
-movies_root: "{{ samba_shares_root }}/movies"
+#movies_root: "{{ samba_shares_root }}/movies"
+movies_root: "/tank/movies"
 
 # Where your TV episodes are stored
 tv_root: "{{ samba_shares_root }}/tv"
