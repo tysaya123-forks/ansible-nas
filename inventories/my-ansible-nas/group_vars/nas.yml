@@ -21,52 +21,27 @@ default_packages:
   - tmux
   - htop
   - speedtest-cli
+  - pciutils
+  - lsscsi
 
 ## Enable some applications
 heimdall_enabled: true
 portainer_enabled: true
 glances_enabled: true
-transmission_enabled: true
+sonarr_enabled: true
+radarr_enabled: true
+jackett_enabled: true
 couchpotato_enabled: true
 homeassistant_enabled: true
 nextcloud_enabled: true
 plex_enabled: true
 transmission_with_openvpn_enabled: true
 
-zfs_root: "/tank"
-
-# Where stuff downloaded will be stored
-downloads_root: "{{ zfs_root }}/downloads"
-
-# Where your movies are stored
-movies_root: "{{ zfs_root }}/movies"
-
-# Where your TV episodes are stored
-tv_root: "{{ zfs_root }}/tv"
-
-# Where torrent files are stored (picked up by Transmission for downloading)
-torrents_root: "{{ zfs_root }}/torrents"
-
-# Where music is stored
-music_root: "{{ zfs_root }}/music"
-
-# Where podcasts are stored
-podcasts_root: "{{ zfs_root }}/podcasts"
-
-# Where your books are stored
-books_root: "{{ zfs_root }}/books"
-
-# Where your audiobooks are stored
-audiobooks_root: "{{ zfs_root }}/audiobooks"
-
-# Where your comics are stored
-comics_root: "{{ zfs_root }}/comics"
-
-# Where photos are stored
-photos_root: "{{ zfs_root }}/photos"
+samba_shares_root: /tank
 
 openvpn_username: p3730894
-openvpn_password: "{{ openvpn_password_secret }}" 
+openvpn_password: "{{ openvpn_password_secret }}"
 openvpn_provider: PIA
 openvpn_config: us_east 
 transmission_openvpn_available_externally: "false"
+transmission_openvpn_local_network: "192.168.0.0/24"
