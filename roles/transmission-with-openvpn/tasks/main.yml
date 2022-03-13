@@ -35,6 +35,7 @@
       OPENVPN_PROVIDER: "{{ openvpn_provider }}"
       OPENVPN_USERNAME: "{{ openvpn_username }}"
       OPENVPN_PASSWORD: "{{ openvpn_password }}"
+      DISABLE_PORT_UPDATER: "true"
       OPENVPN_CONFIG: "{{ openvpn_config }}"
       WEBPROXY_ENABLED: "true"
       WEBPROXY_PORT: "3128"
