@@ -264,6 +264,11 @@
         - nextcloud
       when: (nextcloud_enabled | default(False))
 
+    - role: nodered
+      tags:
+        - nodered_enabled
+      when: (nodered_enabled | default(False))
+
     - role: nomad
       tags:
         - nomad

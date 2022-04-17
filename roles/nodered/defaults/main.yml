@@ -1,0 +1,21 @@
+---
+node_red_enabled: false
+
+# Networking
+node_red_available_externally: "false"
+node_red_port: 1880
+node_red_hostname: "node-red"
+
+# Directories
+node_red_data_directory: "{{ docker_home }}/node_red"
+
+# Security
+# n8n_basic_auth_user: "node_red_user"
+# n8n_basic_auth_password: "node_red_change_me"
+
+# uid/gid
+node_red_user_id: "1000"
+node_red_group_id: "1000"
+
+# specs
+node_red_memory: 1g

@@ -1,0 +1,32 @@
+---
+- name: Create node-red Directory
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ node_red_user_id }}"
+    group: "{{ node_red_group_id }}"
+  with_items:
+    - "{{ node_red_data_directory }}"
+
+- name: Node-Red Docker Container
+  docker_container:
+    name: node-red
+    image: nodered/node-red
+    pull: true
+    ports:
+      - "{{ node_red_port }}:1880"
+    volumes:
+      - "{{ node_red_data_directory }}:/data:rw"
+    restart_policy: unless-stopped
+    memory: "{{ node_red_memory }}"
+    env:
+      TZ: "{{ ansible_nas_timezone }}"
+      PUID: "{{ node_red_user_id }}"
+      PGID: "{{ node_red_group_id }}"
+    labels:
+      traefik.enable: "{{ node_red_available_externally }}"
+      traefik.http.routers.nodered.rule: "Host(`{{ node_red_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.nodered.tls.certresolver: "letsencrypt"
+      traefik.http.routers.nodered.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.routers.nodered.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.services.nodered.loadbalancer.server.port: "1880"
