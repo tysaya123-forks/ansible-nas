@@ -8,3 +8,24 @@
   package:
     name: "{{ default_packages }}"
     state: latest
+
+- name: Disable SSH password auth
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^#?PasswordAuthentication yes"
+    line: "PasswordAuthentication no"
+  register: sshd_config
+
+- name: Enable passwordless sudo for "{{ ansible_nas_user }}"
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%sudo'
+    line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+- name: Restart SSH daemon
+  service:
+    name: sshd
+    state: restarted
+  when: sshd_config.changed
