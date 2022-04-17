@@ -273,6 +273,11 @@
       tags:
         - nomad
 
+    - role: nodered
+      tags:
+        - nodered_enabled
+      when: (nodered_enabled | default(False))
+
     - role: nzbget
       tags:
         - nzbget
