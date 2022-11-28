@@ -4,7 +4,7 @@
     - name: Check for Gitea installation
       fail:
         msg: "Drone-CI requires Gitea enabled and running for authentication, please set that up first."
-      when: gitea_enabled is false
+      when: not gitea_enabled
 
     - name: Check for Gitea config
       fail:
@@ -72,7 +72,7 @@
           ALLOWED_HOST_LIST=private
           SKIP_TLS_VERIFY=true
       notify: restart gitea
-  when: drone_ci_enabled is true
+  when: drone_ci_enabled 
 
 - name: Stop Drone-CI
   block:
@@ -85,4 +85,4 @@
       docker_container:
         name: "{{ drone_ci_runner_container_name }}"
         state: absent
-  when: drone_ci_enabled is false
+  when: not drone_ci_enabled
