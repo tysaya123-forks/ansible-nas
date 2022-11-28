@@ -28,7 +28,7 @@
         name: "{{ nomad_service_name }}"
         state: started
         enabled: yes
-  when: nomad_enabled is true
+  when: nomad_enabled 
 
 - name: Stop Nomad
   block:
@@ -37,4 +37,4 @@
         name: "{{ nomad_service_name }}"
         state: stopped
         enabled: no
-  when: nomad_enabled is false
+  when: not nomad_enabled
