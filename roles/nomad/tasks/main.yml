@@ -30,6 +30,11 @@
         enabled: yes
   when: nomad_enabled 
 
+- name: Register Nomad Systemd Status
+  ansible.builtin.systemd:
+    name: "{{ nomad_service_name }}"
+  register: nomad_service_status
+
 - name: Stop Nomad
   block:
     - name: Stop Nomad
@@ -37,4 +42,4 @@
         name: "{{ nomad_service_name }}"
         state: stopped
         enabled: no
-  when: not nomad_enabled
+  when: nomad_service_status.status.ActiveState == "active" and not nomad_enabled
