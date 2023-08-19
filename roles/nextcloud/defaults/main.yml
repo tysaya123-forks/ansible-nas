@@ -6,8 +6,8 @@ nextcloud_available_externally: false
 nextcloud_data_directory: "{{ docker_home }}/nextcloud"
 
 # images
-nextcloud_image: "nextcloud:stable"
-nextcloud_mysql_image: "mysql:5.7"
+nextcloud_image: "nextcloud:latest"
+nextcloud_mysql_image: "mysql:latest"
 
 # network
 nextcloud_port: "8080"
