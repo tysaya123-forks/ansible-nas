@@ -13,7 +13,7 @@
 ansible_nas_user: tychoy
 ansible_nas_email: tychoyacub@gmail.com
 ansible_nas_hostname: clizby
-ansible_nas_timezone: EST
+ansible_nas_timezone: MST
 
 default_packages:
   - vim
@@ -38,11 +38,15 @@ nodered_enabled: true
 plex_enabled: true
 transmission_with_openvpn_enabled: true
 cloudcmd_enabled: true
+ddns_updater_enabled: true
 
 samba_shares_root: /tank
+docker_home: /tank/docker
+
+# nextcloud_admin_user: admin
 
 openvpn_username: p3730894
 openvpn_password: "{{ openvpn_password_secret }}"
 openvpn_provider: PIA
-openvpn_config: us_east
-transmission_openvpn_local_network: "192.168.0.0/24"
+openvpn_config: us_california
+transmission_openvpn_local_network: "10.0.0.0/24"
