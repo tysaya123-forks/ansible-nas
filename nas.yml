@@ -14,9 +14,9 @@
         - ansible-nas
 
     - role: bertvv.samba
-      tags:
-        - samba
-        - skip_ansible_lint
+     tags:
+       - samba
+       - skip_ansible_lint
 
     - role: geerlingguy.nfs
       tags:
@@ -272,6 +272,11 @@
     - role: nomad
       tags:
         - nomad
+
+    - role: nodered
+      tags:
+        - nodered_enabled
+      when: (nodered_enabled | default(False))
 
     - role: nzbget
       tags:
