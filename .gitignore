@@ -1,9 +1,11 @@
+NOTES
+
 tests/test.yml
 site
 .vagrant
 *.retry
 *.log
-inventories
+# inventories
 .cache
 roles/bertvv.samba
 roles/geerlingguy.docker

@@ -1,6 +1,8 @@
 ---
-- name: Ansible-NAS
-  hosts: all
+- hosts: all
+
+  pre_tasks:
+    - import_tasks: tasks/essential.yml
 
   roles:
     ###
@@ -265,6 +267,11 @@
     - role: nextcloud
       tags:
         - nextcloud
+
+    - role: nodered
+      tags:
+        - nodered_enabled
+      when: (nodered_enabled | default(False))
 
     - role: nomad
       tags:
