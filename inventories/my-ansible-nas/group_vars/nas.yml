@@ -38,6 +38,7 @@ nodered_enabled: true
 plex_enabled: true
 transmission_with_openvpn_enabled: true
 cloudcmd_enabled: true
+dashy_enabled: true
 
 samba_shares_root: /tank
 docker_home: /tank/docker
