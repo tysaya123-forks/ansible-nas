@@ -39,6 +39,7 @@ plex_enabled: true
 transmission_with_openvpn_enabled: true
 cloudcmd_enabled: true
 dashy_enabled: true
+ddns_updater_enabled: true
 
 samba_shares_root: /tank
 docker_home: /tank/docker
@@ -50,3 +51,10 @@ openvpn_password: "{{ openvpn_password_secret }}"
 openvpn_provider: PIA
 openvpn_config: us_california
 transmission_openvpn_local_network: "10.0.0.0/24"
+
+ddns_updater_config:
+  settings:
+    - provider: duckdns
+      domain: example.com
+      host: clizby.duckdns.org
+      toekn: 4084eef3-88c2-4fc0-b039-b5fec1326ad7
