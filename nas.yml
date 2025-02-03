@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: '{{ hosts | default("clizby") }}'
 
   pre_tasks:
     - import_tasks: tasks/essential.yml
