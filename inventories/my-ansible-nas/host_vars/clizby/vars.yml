@@ -1,0 +1,64 @@
+---
+##                       ._____.   .__
+##  _____    ____   _____|__\_ |__ |  |   ____             ____ _____    ______
+##  \__  \  /    \ /  ___/  || __ \|  | _/ __ \   ______  /    \\__  \  /  ___/
+##   / __ \|   |  \\___ \|  || \_\ \  |_\  ___/  /_____/ |   |  \/ __ \_\___ \
+##  (____  /___|  /____  >__||___  /____/\___  >         |___|  (____  /____  >
+##       \/     \/     \/        \/          \/               \/     \/     \/
+##     a n s i b l e - n a s      https://github.com/davestephens/ansible-nas
+
+# Add your all.yml config overrides to this file. See group_vars/all.yml for all possible settings.
+
+ansible_nas_user: tychoy
+ansible_nas_email: tychoyacub@gmail.com
+ansible_nas_hostname: clizby
+ansible_nas_timezone: MST
+
+default_packages:
+  - vim
+  - neofetch
+  - tmux
+  - htop
+  - speedtest-cli
+  - pciutils
+  - lsscsi
+
+## Enable some applications
+heimdall_enabled: true
+portainer_enabled: true
+glances_enabled: true
+sonarr_enabled: true
+radarr_enabled: true
+jackett_enabled: true
+couchpotato_enabled: true
+homeassistant_enabled: true
+nextcloud_enabled: true
+nodered_enabled: true
+plex_enabled: true
+transmission_with_openvpn_enabled: true
+cloudcmd_enabled: true
+dashy_enabled: true
+ddns_updater_enabled: true
+traefik_enabled: true
+
+samba_shares_root: /tank
+docker_home: /tank/docker
+docker_venv: /tank/docker_venv
+
+# nextcloud_admin_user: admin
+
+openvpn_username: p3730894
+openvpn_password: "{{ openvpn_password_secret }}"
+openvpn_provider: PIA
+openvpn_config: us_california
+transmission_openvpn_local_network: "10.0.0.0/24"
+
+ddns_updater_config:
+  settings:
+    - provider: duckdns
+      domain: example.com
+      host: clizby.duckdns.org
+      toekn: 4084eef3-88c2-4fc0-b039-b5fec1326ad7
+
+plex_available_externally: true
+homeassistant_available_externally: true

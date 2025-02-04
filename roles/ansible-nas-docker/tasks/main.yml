@@ -1,7 +1,7 @@
 ---
-- name: Install python3-pip
+- name: Install python3-pip and virtualenv
   ansible.builtin.apt:
-    name: python3-pip
+    name: python3-pip, virtualenv
     state: present
   register: result
   until: result is succeeded
@@ -10,6 +10,7 @@
   ansible.builtin.pip:
     name: docker-py
     state: absent
+    virtualenv: "{{ docker_venv }}"
   register: result
   until: result is succeeded
 
@@ -17,6 +18,7 @@
   ansible.builtin.pip:
     name: docker
     state: present
+    virtualenv: "{{ docker_venv }}"
   register: result
   until: result is succeeded
 
