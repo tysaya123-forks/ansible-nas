@@ -38,12 +38,12 @@ plex_enabled: true
 transmission_with_openvpn_enabled: true
 cloudcmd_enabled: true
 dashy_enabled: true
-ddns_updater_enabled: true
 traefik_enabled: true
 
 samba_shares_root: /tank
 docker_home: /tank/docker
 docker_venv: /tank/docker_venv
+
 
 # nextcloud_admin_user: admin
 
@@ -53,12 +53,19 @@ openvpn_provider: PIA
 openvpn_config: us_california
 transmission_openvpn_local_network: "10.0.0.0/24"
 
+ddns_updater_enabled: true
+ansible_nas_domain: clizby.duckdns.org
+duckdns_token: 4084eef3-88c2-4fc0-b039-b5fec1326ad7
 ddns_updater_config:
   settings:
     - provider: duckdns
-      domain: example.com
-      host: clizby.duckdns.org
-      toekn: 4084eef3-88c2-4fc0-b039-b5fec1326ad7
+      domain: "{{ ansible_nas_domain }}"
+      token: "{{ duckdns_token }}"
 
 plex_available_externally: true
 homeassistant_available_externally: true
+homeassistant_hostname: "ha"
+traefik_dns_provider: duckdns
+traefik_environment_variables:
+  SUBDOMAINS: "{{ ansible_nas_domain }}"
+  TOKEN: "{{ duckdns_token }}"
