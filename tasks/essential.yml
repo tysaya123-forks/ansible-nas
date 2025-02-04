@@ -1,9 +1,9 @@
 ---
-# - name: Update Packages
-#   apt:
-#     update_cache: yes
-#     upgrade: yes
-        
+- name: Update Packages
+  apt:
+    update_cache: yes
+    upgrade: yes
+
 - name: Install Essential
   package:
     name: "{{ default_packages }}"
